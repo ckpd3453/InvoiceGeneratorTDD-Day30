@@ -1,12 +1,12 @@
 
-public class InvoiceGenerator2 {
+public class InvoiceGenerator3 {
 	/*
 	 * Created constants given in the problems
 	 */
 	private static final double MINIMUM_COST_PER_KILOMETER = 10.00;
 	private static final int COST_PER_TIME = 1;
 	private static final int MINIMUM_FARE = 5;
-	
+	RideRepository3 rideRepository = new RideRepository3();
 	/*
 	 * Method to calculate fare
 	 */
@@ -18,11 +18,27 @@ public class InvoiceGenerator2 {
 	/*
 	 * Method to calculate total fare for multiple rides
 	 */
-	public InvoiceSummary calculateFare(Ride2[] rides) {
+	public InvoiceSummary3 calculateFare(Ride3[] rides) {
 		double totalFare = 0;
-		for (Ride2 ride : rides) {
+		for (Ride3 ride : rides) {
 			totalFare = this.calculateFare(ride.distance, ride.time);
 		}
-		return new InvoiceSummary(rides.length, totalFare);
+		return new InvoiceSummary3(rides.length, totalFare);
+	}
+	
+	/*
+	 * Method to add every ride to the RideRepository class
+	 */
+	public void addRide(String userId, Ride3[] rides) {
+		rideRepository.addRide(userId, rides);
+		
+	}
+	
+	/*
+	 * Method to get the calculated fare for every ride
+	 */
+	public InvoiceSummary3 getInvoiceSummary(String userId) {
+		return this.calculateFare(rideRepository.getRide(userId));
+		
 	}
 }
