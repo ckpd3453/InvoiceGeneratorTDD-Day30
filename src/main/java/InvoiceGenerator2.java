@@ -1,5 +1,5 @@
 
-public class InvoiceGenerator1 {
+public class InvoiceGenerator2 {
 	/*
 	 * Created constants given in the problems
 	 */
@@ -18,11 +18,11 @@ public class InvoiceGenerator1 {
 	/*
 	 * Method to calculate total fare for multiple rides
 	 */
-	public double calculateFare(Ride[] rides) {
+	public InvoiceSummary calculateFare(Ride2[] rides) {
 		double totalFare = 0;
-		for (Ride ride : rides) {
+		for (Ride2 ride : rides) {
 			totalFare = this.calculateFare(ride.distance, ride.time);
 		}
-		return totalFare;
+		return new InvoiceSummary(rides.length, totalFare);
 	}
 }
